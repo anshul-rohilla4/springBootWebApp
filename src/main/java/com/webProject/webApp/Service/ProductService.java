@@ -18,6 +18,8 @@ public class ProductService {
             )
     );
 
+    public ProductService() {
+    }
 
 
     public List<Product> getProducts(){
@@ -32,6 +34,30 @@ public class ProductService {
 
     public void addProduct(Product prod){
         products.add(prod);
+    }
+
+    public void updateProduct(Product prod){
+        int index=-1;
+        for(int i=0;i<products.size();i++){
+            if(products.get(i).getProductId()==prod.getProductId()){
+                index=i;
+                break;
+            }
+        }
+        products.set(index,prod);
+    }
+
+    public void delProduct(int productId){
+        int index=-1;
+        for(int i=0;i<products.size();i++){
+            if(products.get(i).getProductId()==productId){
+                index=i;
+                break;
+            }
+        }
+
+        System.out.println("index: "+index);
+        products.remove(index);
     }
 
 
